@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login_REGISTER</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link th:href="@{/form/login.css}" rel="stylesheet" >
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script th:src="@{/form/login.js}"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+
+        <!-- Mixins-->
+        <!-- Pen Title-->
+
+        <div class="container">
+            <div class="card"></div>
+            <div class="card">
+                <h1 class="title">Admin-Login</h1>
+                <form th:action="@{/admin/login}" method="post" th:object="${user}">
+                    <div th:if="${message} != null" class="alert alert-success text-center" style="color: red" >
+                        <h6 th:text="${message}"></h6>
+                    </div>
+                    <div class="input-container">
+                        <input type="email" name="email" id="Email" required="required" />
+                        <label for="Email">Username</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" name="password" id="Password" required="required"/>
+                        <label for="Password">Password</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit"><span>Go</span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Portfolio--><a id="portfolio" th:href="@{/client/home}" title="View my portfolio!"><i class="fa fa-link"></i></a>
+    </div>
+</div>
+
+</body>
+</html>

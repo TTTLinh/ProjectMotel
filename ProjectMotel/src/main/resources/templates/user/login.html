@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login_REGISTER</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link th:href="@{/form/login.css}" rel="stylesheet" >
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script th:src="@{/form/login.js}"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+
+        <!-- Mixins-->
+        <!-- Pen Title-->
+        <div class="pen-title">
+
+        </div>
+        <div class="container">
+            <div class="card"></div>
+            <div class="card">
+                <h1 class="title">Login User</h1>
+                <form th:action="@{/client/login}" method="post" th:object="${user}">
+                    <div th:if="${message} != null" class="alert alert-success text-center" style="color: red" >
+                        <h6 th:text="${message}"></h6>
+                    </div>
+                    <div th:if="${messageSuccessfully} != null" class="alert alert-success text-center" >
+                        <h6 th:text="${messageSuccessfully}"></h6>
+                    </div>
+                    <div class="input-container">
+                        <input type="text"  th:field="*{email}" required="required" />
+                        <label for="Email">Username</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="input-container">
+                        <input type="password"  th:field="*{password}"  required="required"/>
+                        <label for="Password">Password</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="button-container">
+                        <button><span>Go</span></button>
+                        <button onclick="cancelForm()">Cancel</button>
+
+                    </div>
+                </form>
+            </div>
+            <div class="card alt">
+                <div class="toggle"></div>
+                <h1 class="title">Register
+                    <div class="close"></div>
+                </h1>
+                <form th:action="@{/client/users/save}" method="post" th:object="${user}">
+                    <input type="hidden" th:field="*{userId}" id="typeId" >
+                    <div class="input-container">
+                        <input type="text" id="FirstName" th:field="*{firstName}"/>
+                        <label for="FirstName">First Name</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="LastName" th:field="*{lastName}" />
+                        <label for="LastName">Last Name</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="Email" required="required" th:field="*{email}"/>
+                        <label for="Email">Email</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" id="Password" required="required" th:field="*{password}"/>
+                        <label for="Password">Password</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="button-container">
+                        <button><span>Next</span></button>
+                        <button onclick="cancelForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Portfolio--><a id="portfolio" th:href="@{/client}" title="View my portfolio!"><i class="fa fa-link"></i></a>
+    </div>
+</div>
+<script type="text/javascript">
+    function cancelForm(){
+        window.location="[[@{/client}]]"
+    }
+</script>
+</body>
+</html>
